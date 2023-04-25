@@ -1,31 +1,31 @@
 package principal.modelos;
 
-public class Cliente {
-    private Pessoa pessoa;
-    private int idCliente;
- 
-  public Cliente() {
-  }
+	public class Cliente extends Pessoa {
+		
+		private int idCliente;
+		
+		
+	public Cliente() {
+	}
 
-  public Cliente(Pessoa pessoa, int idCliente) {
-    this.pessoa = pessoa;
-    this.idCliente = idCliente;
-  }
+	
+	public Cliente(String nome , String telefone) {
+		super(nome, telefone);
+	}
+	
+	public Cliente(String nome, String telefone, int idCliente) {
+		super(nome,telefone);
+		this.idCliente = idCliente;
+	}
 
-  public Pessoa getPessoa() {
-    return pessoa;
-   }
 
-  public void setPessoa(Pessoa pessoa) {
-    this.pessoa = pessoa;
-  }
+	public int getIdCliente() {
+		return idCliente;
+	}
 
-  public int getIdCliente() {
-    return idCliente;
-  }
- 
-  public void setIdCliente(int idCliente) {
-    this.idCliente = idCliente;
-  }
+
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
+	}
+
 }
-
