@@ -2,9 +2,13 @@ package principal.modelos;
 
 public class Item_Pedido {
 	
+	
 	private int quantidade;
 	private double valorUnitario;
-	private double valorTotal;
+	
+	public double getValorTotal() {
+		return quantidade * valorUnitario;
+	}
 	
 	public Item_Pedido() {
 		
@@ -13,7 +17,6 @@ public class Item_Pedido {
 	public Item_Pedido(int quantidade, double valorUnitario, double valorTotal) {
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
-		this.valorTotal = valorTotal;
 	}
 
 	public int getQuantidade() {
@@ -32,13 +35,6 @@ public class Item_Pedido {
 		this.valorUnitario = valorUnitario;
 	}
 
-	public double getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
 	
 	
 
