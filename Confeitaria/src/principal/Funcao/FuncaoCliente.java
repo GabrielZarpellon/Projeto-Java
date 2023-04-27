@@ -1,17 +1,16 @@
-package Funcao;
+package funcao;
 
 import java.io.File;
 
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import principal.modelos.Cliente;
-import principal.modelos.Produto;
 
 public class FuncaoCliente {
 	
 	public static void LerClientes()  throws FileNotFoundException{
 		
-		String arquivoClientes = "C:\\Users\\Acer\\git\\Teste\\Confeitaria\\src\\arquivosTxt\\Clientes";
+		String arquivoClientes = "C:\\Mari\\Confeitaria\\src\\arquivosTxt\\Clientes";
 		File arquivo = new File(arquivoClientes);
 		Scanner clientes = new Scanner(arquivo);
 		

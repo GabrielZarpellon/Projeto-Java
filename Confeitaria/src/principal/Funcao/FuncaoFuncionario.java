@@ -1,4 +1,4 @@
-package Funcao;
+package funcao;
 
 import java.io.File;
 import java.util.Scanner;
@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 public class FuncaoFuncionario {
 	public static void LerFuncionario() throws FileNotFoundException{
 		
-		String arquivoFuncionarios = "C:\\Users\\Acer\\git\\Teste\\Confeitaria\\src\\arquivosTxt\\Funcionarios";
+		String arquivoFuncionarios = "C:\\Mari\\Confeitaria\\src\\arquivosTxt\\Funcionarios";
 		File arquivo = new File(arquivoFuncionarios);
 		Scanner funcionarios = new Scanner(arquivo);
 		
