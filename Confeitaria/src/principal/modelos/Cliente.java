@@ -27,5 +27,7 @@ package principal.modelos;
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
 	}
-
+	
+	
 }
+

@@ -1,14 +1,15 @@
 package principal.modelos;
 
 import java.util.ArrayList;
+
 import java.util.List;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Pedido {
 	private int id_pedido;
-	private Date data;
-	private double valorTotal;
+	private LocalDateTime data;
 	private List<Item_Pedido> Itens_Pedidos = new ArrayList<>();
+	private double valorTotal;
 	
 	public void adicionar(Item_Pedido Item_Pedido) {
 		this.Itens_Pedidos.add(Item_Pedido);
@@ -20,10 +21,10 @@ public class Pedido {
 	public void setId_pedido(int id_pedido) {
 		this.id_pedido = id_pedido;
 	}
-	public Date getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 	public double getValorTotal() {
