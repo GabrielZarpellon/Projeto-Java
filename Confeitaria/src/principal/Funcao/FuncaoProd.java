@@ -1,7 +1,8 @@
-package Funcao;
+package funcao;
 
 import java.io.File;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import principal.modelos.Produto;
@@ -9,12 +10,13 @@ import principal.modelos.Produto;
 import java.io.FileNotFoundException;
 
 public class FuncaoProd {
-public static void LerProdutos () throws FileNotFoundException {
-	String arquivoProdutos = "C:\\Users\\Acer\\git\\Teste\\Confeitaria\\src\\arquivosTxt\\Produtos";
+public static List<Produto> LerProdutos () throws FileNotFoundException {
+	String arquivoProdutos = "C:\\Mari\\Confeitaria\\src\\arquivosTxt\\Produtos";
 	File arquivo = new File(arquivoProdutos);
 	Scanner produtos = new Scanner(arquivo);
 	
-	Produto[] vetorDeProdutos = new Produto[23];
+	//Produto[] produtosDisponiveis = new Produto[23];
+	List<Produto> produtosDisponiveis = new ArrayList<>();
 	
 	int cont = 0;
 	
@@ -30,19 +32,24 @@ public static void LerProdutos () throws FileNotFoundException {
 		p.setPreco(Double.parseDouble(valores[2]));
 		p.setTipo(valores[3]);
 		
-		vetorDeProdutos[cont] = p;
+		//produtosDisponiveis[cont] = p;
+		produtosDisponiveis.add(p);
 		cont++;
 		}catch(NumberFormatException e) {
 			System.out.println("Erro ao ler o produto na linha " + cont + ": " + e.getMessage());
 		}
+		
+		return produtosDisponiveis;
 	}
 	
 	
 	System.out.println("Lista de Produtos: \n\n");
 	
-	for(int i = 0; i < vetorDeProdutos.length; i++) {
+	//Colocar lista
+	
+	//for(int i = 0; i < produtosDisponiveis; i++) {
 		
-		Produto p = vetorDeProdutos[i];
+		Produto p = produtosDisponiveis[i];
 		System.out.println(p.getId_produto() + "\t" + p.getNome() + "\t" + p.getPreco() + "\t" + p.getTipo());
 		System.out.println();
 		
