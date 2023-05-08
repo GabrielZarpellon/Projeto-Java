@@ -13,9 +13,10 @@ public class FuncaoListaEstoque {
 	public static void MenuEstoque() throws FileNotFoundException {
 		
 	String arquivoEstoque = "C:\\Users\\Acer\\git\\Teste\\Confeitaria\\src\\arquivosTxt\\Estoque";
+	String arquivoDeDestino = "C:\\Users\\Acer\\git\\Teste\\Confeitaria\\src\\arquivosTxt\\Estoque";
 	File arquivo = new File (arquivoEstoque);
 	Scanner leitorArquivo = new Scanner(arquivo);
-	Formatter gravador = new Formatter(arquivoEstoque);
+	Formatter gravador = new Formatter(arquivoDeDestino);
 	
 	Scanner leitor = new Scanner (System.in);
 
@@ -42,7 +43,7 @@ public class FuncaoListaEstoque {
 		}
 	}
 	
-	PrintWriter registro = new PrintWriter(arquivo);
+	//PrintWriter registro = new PrintWriter(arquivo);
 	
 	do {
 		System.out.println(" _ Menu Estoque _ \n[1]Adicionar item \n[2]Remover item \n[3]Listar Estoque \n[4]Sair");
@@ -63,8 +64,8 @@ public class FuncaoListaEstoque {
 
 			listaDeEstoque.add(inserir);
 			
-			registro.println(item + "," + qntd);
-			registro.flush();
+			//registro.println(item + "," + qntd);
+			//registro.flush();
 			
 			for(Estoque estoque : listaDeEstoque) {
 				gravador.format(item + qntd);
@@ -95,10 +96,10 @@ public class FuncaoListaEstoque {
 	}while(op != 4);
 	
 	
-	for (Estoque estoque : listaDeEstoque) {
-        registro.println(estoque.getNome() + "," + estoque.getQuantidade());
-    }
-    registro.close();
+//	for (Estoque estoque : listaDeEstoque) {
+//        registro.println(estoque.getNome() + "," + estoque.getQuantidade());
+//    }
+//    registro.close();
 	
 	leitor.close();
 	gravador.close();
