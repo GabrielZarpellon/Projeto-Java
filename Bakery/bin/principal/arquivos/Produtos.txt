@@ -1,0 +1,23 @@
+1	BolodeCenoura	15.00	Bolo
+2	Caqui de Laranja	12.00	Bolo
+3	Bolo de Chocolate	12.00	Bolo
+4	Bolo de Limao	12.00	Bolo
+5	Bolo de Morango	13.00	Bolo
+6	Bolo Dois Amores	13.00	Bolo
+7	Brownie	1.50	Sobremesa
+8	Mini Pudim	5.00	Sobremesa
+9	Palha Italiana	5.00	Sobremesa
+10	Alfajor	3.00	Sobremesa
+11	Beijinho	2.00	Doce
+12	Mousse Maracuja	5.00	Doce
+13	Mousse Morango	5.00	Doce
+14	Mousse Limao	5.00	Doce
+15	Brigadeiro	2.00	Doce
+16	Suco Laranja	8.00	Bebida
+17	Suco Morango	10.00	Bebida
+18	Suco Abacaxi	10.00	Bebida
+19	Suco Uva	9.00	Bebida
+20	Refri Lata	6.00	Bebida
+21	Refri Garrafa	12.00	Bebida
+22	Agua	3.00	Bebida
+23	Agua com gas	3.50	Bebida

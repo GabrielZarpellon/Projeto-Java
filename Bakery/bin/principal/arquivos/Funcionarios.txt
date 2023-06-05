@@ -1,0 +1,5 @@
+1	Lara Luiza	41591263487	Atendente	manha	1200.00
+2	Mario Rodrigues	41265419863	Atendente	tarde	1200.00
+3	Katia Jefferson	41541263897	Caixa	manha	2000.00
+4	Joao Pedro	418524163	Caixa	tarde	2000.00
+5	Fernando Faria	41231541156	Gerente	    integral	5600.00
