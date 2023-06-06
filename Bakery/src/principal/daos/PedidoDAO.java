@@ -5,21 +5,20 @@ import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import principal.modelos.Produto;
+import principal.modelos.Pedido;
 
-
-public class ProdutoDAO {
+public class PedidoDAO {
 	
 	private EntityManagerFactory emf;
 	private EntityManager em;
 	
-	public ProdutoDAO() {
+	public PedidoDAO() {
 		//Criacao/configuracao da persistencia
 		emf = Persistence.createEntityManagerFactory("ex_mysql");
 		em = emf.createEntityManager();
 	}
 	
-	public  Integer salvar(Produto p) {
+	public  Integer salvar(Pedido p) {
 		
 		em.getTransaction().begin();
 		em.persist(p);
@@ -29,23 +28,23 @@ public class ProdutoDAO {
 		
 	}
 	
-	public  List<Produto> listar(){
+	public  List<Pedido> listar(){
 		
-		List<Produto> p = em.createQuery("From Produto", Produto.class).getResultList();
+		List<Pedido> p = em.createQuery("From Pedido", Pedido.class).getResultList();
 	
 		return p;
 		
 	}
 	
-	public  Produto buscarPorId(Integer id) {
+	public  Pedido buscarPorId(Integer id) {
 		
-		Produto p = em.find(Produto.class, id);
+		Pedido p = em.find(Pedido.class, id);
 		
 		return p;
 		
 	}
 	
-	public Integer atualizar (Produto p) {
+	public  Integer atualizar (Pedido p) {
 		
 		em.getTransaction().begin();
 		em.merge(p);
@@ -54,24 +53,22 @@ public class ProdutoDAO {
 		return p.getId();
 	}
 	
-	public void excluir(Integer id) {
+	public  void excluir(Integer id) {
 		
 		excluir(buscarPorId(id));
 		
 	}
 	
-	public void excluir(Produto p) {
+	public  void excluir(Pedido p) {
 		
 		em.getTransaction().begin();
 		em.remove(p);
 		em.getTransaction().commit();
 		
 	}
-	
 	public void close() {
 		em.close();
 		emf.close();
 	}
 
 }
-

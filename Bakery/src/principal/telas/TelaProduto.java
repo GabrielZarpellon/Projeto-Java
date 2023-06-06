@@ -9,16 +9,13 @@ import principal.daos.ProdutoDAO;
 import principal.modelos.Produto;
 
 public class TelaProduto {
-
-		
-		static EntityManagerFactory emf;
-		static EntityManager em;
-
 		
 		public static void CadastraProduto() {
 			
 			Scanner leitor = new Scanner(System.in);
 			int op;
+			
+			ProdutoDAO produtoDAO = new ProdutoDAO();
 			
 			do {
 				System.out.println("Menu Cadastro de Produtos: \n [1]Cadastrar Produto \n[2]Atualizar Produto \n[3]Deletar Produto \n[4]Sair");
@@ -37,7 +34,7 @@ public class TelaProduto {
 					
 					Produto p = new Produto(nome, preco, tipo);
 					
-					Integer id = ProdutoDAO.salvar(p);
+					Integer id = produtoDAO.salvar(p);
 					System.out.println("Id: " + id);
 				
 				break;
@@ -48,13 +45,13 @@ public class TelaProduto {
 					System.out.println("Digite o Id do produto: ");
 					int prod = leitor.nextInt();
 					
-					Produto produto = ProdutoDAO.buscarPorId(prod);
+					Produto produto = produtoDAO.buscarPorId(prod);
 					
 					System.out.println("Digite o novo nome: ");
 					String novo = leitor.next();
 					
 					produto.setNome(novo);
-					ProdutoDAO.atualizar(produto);
+					produtoDAO.atualizar(produto);
 					
 					break;
 					
@@ -63,7 +60,7 @@ public class TelaProduto {
 					System.out.println("Digite o id do produto que deseja excluir: ");
 					int num = leitor.nextInt();
 					
-					ProdutoDAO.excluir(num);
+					produtoDAO.excluir(num);
 					
 					break;
 					
@@ -76,8 +73,7 @@ public class TelaProduto {
 			}while(op != 4);
 			
 			leitor.close();
-			em.close();
-			emf.close();
+			produtoDAO.close();
 			
 		}
 

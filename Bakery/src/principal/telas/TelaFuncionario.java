@@ -19,6 +19,7 @@ public class TelaFuncionario {
 		Scanner leitor = new Scanner(System.in);
 		int op;
 		
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		
 		do {
 			
@@ -44,18 +45,18 @@ public class TelaFuncionario {
 				
 				Funcionario f = new Funcionario(nome, cpf, funcao, periodo, salario);
 				
-				Integer id = FuncionarioDAO.salvar(f);
+				Integer id = funcionarioDAO.salvar(f);
 				System.out.println("Id: " + id);
 				
 				break;
 				
 			case 2:
-				List<Funcionario> funcionarios = FuncionarioDAO.listar();
+				List<Funcionario> funcionarios = funcionarioDAO.listar();
 				System.out.println();
 				System.out.println("Lista de Funcionarios: ");
 				
 				for(Funcionario funcionario : funcionarios) {
-					System.out.println("Id: " + funcionario.getId() + "Nome: " + funcionario.getNome() + "Cpf: " + funcionario.getCpf() + "Funcao: " + funcionario.getFuncao() + "Periodo: " + funcionario.getPeriodo() + "Salario: " + funcionario.getSalario());
+					System.out.println("Id: " + funcionario.getId() + " Nome: " + funcionario.getNome() + " Cpf: " + funcionario.getCpf() + " Funcao: " + funcionario.getFuncao() + " Periodo: " + funcionario.getPeriodo() + " Salario: " + funcionario.getSalario());
 				}
 				
 				break;
@@ -65,13 +66,13 @@ public class TelaFuncionario {
 				System.out.println("Digite o Id do Funcionario: ");
 				int func = leitor.nextInt();
 				
-				Funcionario funcionario = FuncionarioDAO.buscarPorId(func);
+				Funcionario funcionario = funcionarioDAO.buscarPorId(func);
 				
 				System.out.println("Digite o novo nome: ");
 				String novo = leitor.next();
 				
 				funcionario.setNome(novo);
-				FuncionarioDAO.atualizar(funcionario);
+				funcionarioDAO.atualizar(funcionario);
 				
 				break;
 				
@@ -80,7 +81,7 @@ public class TelaFuncionario {
 				System.out.println("Digite o Id de quem deseja excluir: ");
 				int num = leitor.nextInt();
 				
-				FuncionarioDAO.excluir(num);
+				funcionarioDAO.excluir(num);
 				
 				break;
 				
@@ -90,11 +91,10 @@ public class TelaFuncionario {
 			}
 			
 			
-		}while(op != '5');
+		}while(op != 5);
 		
 		leitor.close();
-		em.close();
-		emf.close();
+		funcionarioDAO.close();
 	}
 	
 

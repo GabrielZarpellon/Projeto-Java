@@ -1,7 +1,7 @@
 package principal.telas;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import principal.daos.CardapioDAO;
+
 
 
 public class TelaInicial {
@@ -20,7 +20,7 @@ public class TelaInicial {
 				
 				break;
 			case 2:
-					CardapioDAO.Cardapio();
+					TelaCardapio.ChamaCardapio();
 				break;
 			case 3:
 					TelaAcesso.TelaAcesso(leitor);

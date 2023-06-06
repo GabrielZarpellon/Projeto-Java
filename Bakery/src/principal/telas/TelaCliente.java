@@ -10,19 +10,15 @@ import principal.daos.ClienteDAO;
 import principal.modelos.Cliente;
 
 public class TelaCliente {
-	
-	static EntityManagerFactory emf;
-	static EntityManager em;
 
 	
 	public static void CadastraCliente() {
 		
 		Scanner leitor = new Scanner(System.in);
 		int op;
+
 		
-		//Criacao/configuracao da persistencia
-		emf = Persistence.createEntityManagerFactory("ex_mysql");
-		em = emf.createEntityManager();
+		ClienteDAO clienteDao = new ClienteDAO();
 		
 		do {
 			System.out.println("Menu Cadastro de Clientes: \n [1]Cadastrar Cliente \n[2]Mostrar Clientes \n[3]Atualizar Cliente \n[4]Deletar Cliente \n[5]Sair");
@@ -38,13 +34,13 @@ public class TelaCliente {
 				
 				Cliente c = new Cliente(nome, cpf);
 				
-				Integer id = ClienteDAO.salvar(c);
+				Integer id = clienteDao.salvar(c);
 				System.out.println("Id: " + id);
 			
 			break;
 			
 			case 2:
-				List<Cliente> clientes = ClienteDAO.listar();
+				List<Cliente> clientes = clienteDao.listar();
 				System.out.println();
 				System.out.println("_______________");
 				System.out.println("Lista de Clientes:");
@@ -61,13 +57,13 @@ public class TelaCliente {
 				System.out.println("Digite o Id da pessoa: ");
 				int cli = leitor.nextInt();
 				
-				Cliente pessoa = ClienteDAO.buscarPorId(cli);
+				Cliente pessoa = clienteDao.buscarPorId(cli);
 				
 				System.out.println("Digite o novo nome: ");
 				String novo = leitor.next();
 				
 				pessoa.setNome(novo);
-				ClienteDAO.atualizar(pessoa);
+				clienteDao.atualizar(pessoa);
 				
 				break;
 				
@@ -76,7 +72,7 @@ public class TelaCliente {
 				System.out.println("Digite o id de quem deseja excluir: ");
 				int num = leitor.nextInt();
 				
-				ClienteDAO.excluir(num);
+				clienteDao.excluir(num);
 				
 				break;
 				
@@ -89,8 +85,7 @@ public class TelaCliente {
 		}while(op != 5);
 		
 		leitor.close();
-		em.close();
-		emf.close();
+		clienteDao.close();
 		
 	}
 

@@ -4,15 +4,22 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import principal.modelos.Funcionario;
 
 
 public class FuncionarioDAO {
 	
-	static EntityManagerFactory emf;
-	static EntityManager em;
+	private EntityManagerFactory emf;
+	private EntityManager em;
 	
-	public static Integer salvar(Funcionario f) {
+	public FuncionarioDAO() {
+		//Criacao/configuracao da persistencia
+		emf = Persistence.createEntityManagerFactory("ex_mysql");
+		em = emf.createEntityManager();
+	}
+	
+	public  Integer salvar(Funcionario f) {
 		
 		em.getTransaction().begin();
 		em.persist(f);
@@ -22,7 +29,7 @@ public class FuncionarioDAO {
 		
 	}
 	
-	public static List<Funcionario> listar(){
+	public  List<Funcionario> listar(){
 		
 		List<Funcionario> f = em.createQuery("From Funcionario", Funcionario.class).getResultList();
 	
@@ -30,7 +37,7 @@ public class FuncionarioDAO {
 		
 	}
 	
-	public static Funcionario buscarPorId(Integer id) {
+	public  Funcionario buscarPorId(Integer id) {
 		
 		Funcionario f = em.find(Funcionario.class, id);
 		
@@ -38,7 +45,7 @@ public class FuncionarioDAO {
 		
 	}
 	
-	public static Integer atualizar (Funcionario f) {
+	public  Integer atualizar (Funcionario f) {
 		
 		em.getTransaction().begin();
 		em.merge(f);
@@ -47,18 +54,22 @@ public class FuncionarioDAO {
 		return f.getId();
 	}
 	
-	public static void excluir(Integer id) {
+	public  void excluir(Integer id) {
 		
 		excluir(buscarPorId(id));
 		
 	}
 	
-	public static void excluir(Funcionario f) {
+	public  void excluir(Funcionario f) {
 		
 		em.getTransaction().begin();
 		em.remove(f);
 		em.getTransaction().commit();
 		
+	}
+	public void close() {
+		em.close();
+		emf.close();
 	}
 
 }

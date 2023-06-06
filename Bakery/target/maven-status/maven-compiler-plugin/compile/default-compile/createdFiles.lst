@@ -1,0 +1,12 @@
+principal\modelos\Cliente.class
+principal\telas\TelaCliente.class
+principal\leituras\LerFuncionario.class
+principal\Programa.class
+principal\modelos\Produto.class
+principal\modelos\Funcionario.class
+principal\telas\TelaInicial.class
+principal\controles\CadastroCliente.class
+principal\telas\TelaAcesso.class
+principal\leituras\LerProduto.class
+principal\modelos\Pessoa.class
+principal\telas\TelaFuncionario.class

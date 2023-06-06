@@ -4,15 +4,22 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import principal.modelos.Cliente;
 
 
 public class ClienteDAO {
 	
-	static EntityManagerFactory emf;
-	static EntityManager em;
+	private EntityManagerFactory emf;
+	private EntityManager em;
 	
-	public static Integer salvar(Cliente cliente) {
+	public ClienteDAO() {
+		//Criacao/configuracao da persistencia
+		emf = Persistence.createEntityManagerFactory("ex_mysql");
+		em = emf.createEntityManager();
+	}
+	
+	public Integer salvar(Cliente cliente) {
 		
 		em.getTransaction().begin();
 		em.persist(cliente);
@@ -22,7 +29,7 @@ public class ClienteDAO {
 		
 	}
 	
-	public static List<Cliente> listar(){
+	public List<Cliente> listar(){
 		
 		List<Cliente> clientes = em.createQuery("From Cliente", Cliente.class).getResultList();
 	
@@ -30,7 +37,7 @@ public class ClienteDAO {
 		
 	}
 	
-	public static Cliente buscarPorId(Integer id) {
+	public Cliente buscarPorId(Integer id) {
 		
 		Cliente cliente = em.find(Cliente.class, id);
 		
@@ -38,7 +45,7 @@ public class ClienteDAO {
 		
 	}
 	
-	public static Integer atualizar (Cliente cliente) {
+	public Integer atualizar (Cliente cliente) {
 		
 		em.getTransaction().begin();
 		em.merge(cliente);
@@ -47,18 +54,23 @@ public class ClienteDAO {
 		return cliente.getId();
 	}
 	
-	public static void excluir(Integer id) {
+	public void excluir(Integer id) {
 		
 		excluir(buscarPorId(id));
 		
 	}
 	
-	public static void excluir(Cliente cliente) {
+	public void excluir(Cliente cliente) {
 		
 		em.getTransaction().begin();
 		em.remove(cliente);
 		em.getTransaction().commit();
 		
+	}
+	
+	public void close() {
+		em.close();
+		emf.close();
 	}
 
 }

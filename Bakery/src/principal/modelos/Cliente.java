@@ -3,10 +3,7 @@ package principal.modelos;
 import jakarta.persistence.Entity;
 
 @Entity
-
-
 public class Cliente extends Pessoa{
-	
 	
 	public Cliente() {
 		
@@ -19,6 +16,8 @@ public class Cliente extends Pessoa{
 
 	public Cliente(String nome, String cpf, int id) {
 		super(nome, cpf, id);
+		
 	}
+	
 	
 }
