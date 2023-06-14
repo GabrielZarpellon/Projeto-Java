@@ -67,6 +67,7 @@ public class FuncionarioDAO {
 		em.getTransaction().commit();
 		
 	}
+	
 	public void close() {
 		em.close();
 		emf.close();

@@ -2,6 +2,8 @@ package principal.daos;
 
 import java.util.List;
 
+
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -9,14 +11,15 @@ import principal.modelos.Pedido;
 
 public class PedidoDAO {
 	
-	private EntityManagerFactory emf;
-	private EntityManager em;
+	static EntityManagerFactory emf;
+	static EntityManager em;
 	
 	public PedidoDAO() {
 		//Criacao/configuracao da persistencia
 		emf = Persistence.createEntityManagerFactory("ex_mysql");
 		em = emf.createEntityManager();
 	}
+	
 	
 	public  Integer salvar(Pedido p) {
 		

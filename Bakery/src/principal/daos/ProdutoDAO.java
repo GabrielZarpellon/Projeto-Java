@@ -45,7 +45,7 @@ public class ProdutoDAO {
 		
 	}
 	
-	public Integer atualizar (Produto p) {
+	public  Integer atualizar (Produto p) {
 		
 		em.getTransaction().begin();
 		em.merge(p);
@@ -54,13 +54,13 @@ public class ProdutoDAO {
 		return p.getId();
 	}
 	
-	public void excluir(Integer id) {
+	public  void excluir(Integer id) {
 		
 		excluir(buscarPorId(id));
 		
 	}
 	
-	public void excluir(Produto p) {
+	public  void excluir(Produto p) {
 		
 		em.getTransaction().begin();
 		em.remove(p);
@@ -74,4 +74,3 @@ public class ProdutoDAO {
 	}
 
 }
-

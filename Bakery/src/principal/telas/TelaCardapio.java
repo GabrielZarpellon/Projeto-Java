@@ -1,6 +1,7 @@
 package principal.telas;
 
 import java.util.List;
+
 import java.util.Scanner;
 import principal.modelos.Produto;
 import principal.daos.ProdutoDAO;
@@ -23,6 +24,7 @@ public class TelaCardapio {
 		}
 		
 		
+		leitor.close();
 	}
 	
 

@@ -19,7 +19,7 @@ public class ClienteDAO {
 		em = emf.createEntityManager();
 	}
 	
-	public Integer salvar(Cliente cliente) {
+	public  Integer salvar(Cliente cliente) {
 		
 		em.getTransaction().begin();
 		em.persist(cliente);
@@ -29,7 +29,7 @@ public class ClienteDAO {
 		
 	}
 	
-	public List<Cliente> listar(){
+	public  List<Cliente> listar(){
 		
 		List<Cliente> clientes = em.createQuery("From Cliente", Cliente.class).getResultList();
 	
@@ -37,7 +37,7 @@ public class ClienteDAO {
 		
 	}
 	
-	public Cliente buscarPorId(Integer id) {
+	public  Cliente buscarPorId(Integer id) {
 		
 		Cliente cliente = em.find(Cliente.class, id);
 		
@@ -45,7 +45,7 @@ public class ClienteDAO {
 		
 	}
 	
-	public Integer atualizar (Cliente cliente) {
+	public  Integer atualizar (Cliente cliente) {
 		
 		em.getTransaction().begin();
 		em.merge(cliente);
@@ -54,13 +54,13 @@ public class ClienteDAO {
 		return cliente.getId();
 	}
 	
-	public void excluir(Integer id) {
+	public  void excluir(Integer id) {
 		
 		excluir(buscarPorId(id));
 		
 	}
 	
-	public void excluir(Cliente cliente) {
+	public  void excluir(Cliente cliente) {
 		
 		em.getTransaction().begin();
 		em.remove(cliente);

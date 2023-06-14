@@ -1,27 +1,27 @@
 package principal.telas;
 
 import java.util.List;
+
+
 import java.util.Scanner;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+
 import principal.daos.ClienteDAO;
 import principal.modelos.Cliente;
 
 public class TelaCliente {
-
+	
 	
 	public static void CadastraCliente() {
 		
 		Scanner leitor = new Scanner(System.in);
 		int op;
-
 		
 		ClienteDAO clienteDao = new ClienteDAO();
 		
+		
 		do {
-			System.out.println("Menu Cadastro de Clientes: \n [1]Cadastrar Cliente \n[2]Mostrar Clientes \n[3]Atualizar Cliente \n[4]Deletar Cliente \n[5]Sair");
+			System.out.println("Menu Cadastro de Clientes: \n [1]Cadastrar Cliente \n[2]Atualizar nome Cliente \n[3]Deletar Cliente \n[4]Sair");
 			op = leitor.nextInt();
 			
 			switch(op) {
@@ -39,20 +39,20 @@ public class TelaCliente {
 			
 			break;
 			
+//			case 2:
+//				List<Cliente> clientes = clienteDao.listar();
+//				System.out.println();
+//				System.out.println("_______________");
+//				System.out.println("Lista de Clientes:");
+//				
+//				for(Cliente cliente : clientes) {
+//					System.out.println("Ïd: " + cliente.getId() + "     Nome: " + cliente.getNome() + "     Cpf: " + cliente.getCpf());
+//				}
+//			
+//				break;
+			
+			
 			case 2:
-				List<Cliente> clientes = clienteDao.listar();
-				System.out.println();
-				System.out.println("_______________");
-				System.out.println("Lista de Clientes:");
-				
-				for(Cliente cliente : clientes) {
-					System.out.println("Ïd: " + cliente.getId() + "     Nome: " + cliente.getNome() + "     Cpf: " + cliente.getCpf());
-				}
-			
-				break;
-			
-			
-			case 3:
 				
 				System.out.println("Digite o Id da pessoa: ");
 				int cli = leitor.nextInt();
@@ -67,7 +67,7 @@ public class TelaCliente {
 				
 				break;
 				
-			case 4:
+			case 3:
 				
 				System.out.println("Digite o id de quem deseja excluir: ");
 				int num = leitor.nextInt();
@@ -76,13 +76,13 @@ public class TelaCliente {
 				
 				break;
 				
-			case 5:
+			case 4:
 				
 				break;
 				
 			}
 		
-		}while(op != 5);
+		}while(op != 4);
 		
 		leitor.close();
 		clienteDao.close();

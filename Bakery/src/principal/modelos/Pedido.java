@@ -1,7 +1,9 @@
 package principal.modelos;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,22 +19,40 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String data;
+	private LocalDateTime data;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
-	@OneToMany	
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Produto> produtos;
 	
 	private float valor;
 	
+	public Pedido() {
+		
+	}
+	
+	public Pedido(Cliente cliente, List<Produto> produtos, float valor) {
+		super();
+		this.cliente = cliente;
+		this.produtos = produtos;
+		this.valor = valor;
+	}
 
+	public Pedido(int id, Cliente cliente, List<Produto> produtos, float valor) {
+		super();
+		this.data = LocalDateTime.now();
+		this.cliente = cliente;
+		this.produtos = produtos;
+		this.valor = valor;
+	}
+	
 	public Pedido(int id, String data, Cliente cliente, List<Produto> produtos, float valor) {
 		super();
 		this.id = id;
-		this.data = data;
+		this.data = LocalDateTime.now();
 		this.cliente = cliente;
 		this.produtos = produtos;
 		this.valor = valor;
@@ -44,14 +64,6 @@ public class Pedido {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
 	}
 
 	public Cliente getCliente() {
@@ -78,8 +90,14 @@ public class Pedido {
 		this.valor = valor;
 	}
 
-	
-	
+	public LocalDateTime getData() {
+		return data;
+	}
+
+	public void setData(LocalDateTime data) {
+		this.data = data;
+	}
+
 	
 	
 	

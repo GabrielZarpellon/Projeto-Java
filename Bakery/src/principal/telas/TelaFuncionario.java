@@ -3,27 +3,26 @@ package principal.telas;
 import java.util.Scanner;
 
 
+
+
 import java.util.List;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
+
 import principal.daos.FuncionarioDAO;
 import principal.modelos.Funcionario;
 
 public class TelaFuncionario {
 	
-	static EntityManagerFactory emf;
-	static EntityManager em;
 	
 	public static void CadastraFuncionario() {
 		
 		Scanner leitor = new Scanner(System.in);
 		int op;
 		
-		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		FuncionarioDAO funcionarioDao = new FuncionarioDAO();
 		
 		do {
 			
-			System.out.println("Menu Cadastro de Funcionarios: \n[1]Cadastrar Funcionarios \n[2]Listar Funcionarios \n[3]Atualizar Funcionario \n[4]Deletar Funcionario \n[5]Sair");
+			System.out.println("Menu Cadastro de Funcionarios: \n[1]Cadastrar Funcionarios \n[2]Atualizar Funcionario \n[3]Deletar Funcionario \n[4]Sair");
 			op = leitor.nextInt();
 			
 			switch(op) {
@@ -45,56 +44,47 @@ public class TelaFuncionario {
 				
 				Funcionario f = new Funcionario(nome, cpf, funcao, periodo, salario);
 				
-				Integer id = funcionarioDAO.salvar(f);
+				Integer id = funcionarioDao.salvar(f);
 				System.out.println("Id: " + id);
 				
 				break;
 				
+				
 			case 2:
-				List<Funcionario> funcionarios = funcionarioDAO.listar();
-				System.out.println();
-				System.out.println("Lista de Funcionarios: ");
-				
-				for(Funcionario funcionario : funcionarios) {
-					System.out.println("Id: " + funcionario.getId() + " Nome: " + funcionario.getNome() + " Cpf: " + funcionario.getCpf() + " Funcao: " + funcionario.getFuncao() + " Periodo: " + funcionario.getPeriodo() + " Salario: " + funcionario.getSalario());
-				}
-				
-				break;
-				
-			case 3:
 				
 				System.out.println("Digite o Id do Funcionario: ");
 				int func = leitor.nextInt();
 				
-				Funcionario funcionario = funcionarioDAO.buscarPorId(func);
+				Funcionario funcionario = funcionarioDao.buscarPorId(func);
 				
 				System.out.println("Digite o novo nome: ");
 				String novo = leitor.next();
 				
 				funcionario.setNome(novo);
-				funcionarioDAO.atualizar(funcionario);
+				funcionarioDao.atualizar(funcionario);
 				
 				break;
 				
-			case 4:
+			case 3:
 				
 				System.out.println("Digite o Id de quem deseja excluir: ");
 				int num = leitor.nextInt();
 				
-				funcionarioDAO.excluir(num);
+				funcionarioDao.excluir(num);
 				
 				break;
 				
-			case 5:
+			case 4:
 				break;
 				
 			}
 			
 			
-		}while(op != 5);
+		}while(op != 4);
 		
 		leitor.close();
-		funcionarioDAO.close();
+		funcionarioDao.close();
+		
 	}
 	
 
